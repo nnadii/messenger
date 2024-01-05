@@ -11,17 +11,12 @@ const Form = () => {
     const { conversationId } = useConversation()
 
     const {register, handleSubmit, setValue, formState: { errors }} = useForm<FieldValues>({
-        defaultValues: {
-            message: ""
-        }
+        defaultValues: { message: "" }
     })
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setValue("message", "", { shouldValidate: true })
-        axios.post("/api/messages", {
-            ...data, 
-            conversationId: conversationId
-        })
+        axios.post("/api/messages", { ...data, conversationId: conversationId })
     }
 
     const handleUpload = (result: any) => {

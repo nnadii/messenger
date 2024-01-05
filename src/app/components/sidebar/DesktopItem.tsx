@@ -10,7 +10,7 @@ interface DesktopItemProps {
     active?: boolean
 }
 
-const DesktopItem: React.FC<DesktopItemProps> = ({label, icon: Icon, href, onClick, active}) => {
+const DesktopItem: React.FC<DesktopItemProps> = ({ label, icon: Icon, href, onClick, active }) => {
     const handleClick = () => {
         if(onClick) return onClick()
     }
