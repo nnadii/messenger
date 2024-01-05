@@ -11,9 +11,7 @@ import AvatarGroup from "@/app/components/AvatarGroup"
 import useActiveList from "@/app/hooks/useActiveList"
 
 interface HeaderProps {
-    conversation: Conversation & {
-        users: User[]
-    }
+    conversation: Conversation & { users: User[] }
 }
 
 const Header: React.FC<HeaderProps> = ({conversation}) => {
@@ -24,9 +22,7 @@ const Header: React.FC<HeaderProps> = ({conversation}) => {
     const isActive = members.indexOf(otherUser?.email!) !== - 1
 
     const statusText = useMemo(() => {
-        if(conversation.isGroup) {
-            return `${conversation.users.length} members`
-        }
+        if(conversation.isGroup) return `${conversation.users.length} members`
 
         return isActive ? "Active" : "Offline"
     }, [conversation, isActive])

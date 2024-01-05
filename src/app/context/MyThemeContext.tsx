@@ -3,14 +3,14 @@
 import { createContext, ReactElement, useEffect, useState } from "react"
 
 const MyThemeContext = createContext({
-isDarkTheme: true,
-toggleThemeHandler: () => {},
+    isDarkTheme: true,
+    toggleThemeHandler: () => {},
 })
 
 interface ThemePropsInterface { children?: JSX.Element | Array<JSX.Element> }
 
 export function MyThemeContextProvider( props: ThemePropsInterface ): ReactElement {
-    const [isDarkTheme, setIsDarkTheme] = useState(true)
+    const [ isDarkTheme, setIsDarkTheme ] = useState(true)
     useEffect(() => initialThemeHandler())
 
     function isLocalStorageEmpty(): boolean { return !localStorage.getItem("isDarkTheme") }
