@@ -51,7 +51,8 @@ const AuthForm = () => {
                 if(callback?.error) toast.error("Invalid credentials")
                 if(callback?.ok && !callback?.error) toast.success("Logged in!")
                 router.push("/users")
-            }).finally(() => setIsLoading(false))
+            })
+            .finally(() => setIsLoading(false))
         }
     }
 

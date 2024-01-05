@@ -18,23 +18,18 @@ interface SettingsModalProps {
     currentUser: User
 }
 
-const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, currentUser}) => {
+const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, currentUser }) => {
     const router = useRouter()
-    const [ isLoading, setIsLoading] = useState(false)
+    const [ isLoading, setIsLoading ] = useState(false)
 
-    const {register, setValue, handleSubmit, watch, formState: { errors }} = useForm<FieldValues>({
-        defaultValues: {
-            name: currentUser?.name,
-            image: currentUser?.image
-        }
+    const { register, setValue, handleSubmit, watch, formState: { errors } } = useForm<FieldValues>({
+        defaultValues: { name: currentUser?.name, image: currentUser?.image }
     })
 
     const image = watch("image")
 
     const handleUpload = (result: any) => {
-        setValue("image", result?.info?.secure_url, {
-            shouldValidate: true
-        })
+        setValue("image", result?.info?.secure_url, { shouldValidate: true })
     }
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
