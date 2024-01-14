@@ -7,11 +7,9 @@ import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useCallback, useState } from "react"
 
-interface UserBoxProps {
-    data: User
-}
+interface UserBoxProps { data: User }
 
-const UserBox: React.FC<UserBoxProps> = ({data}) => {
+const UserBox: React.FC<UserBoxProps> = ({ data }) => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
 
