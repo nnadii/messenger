@@ -25,9 +25,7 @@ export async function DELETE( request: Request, {params}: {params: IParams} ) {
             }
         })
 
-        if(!existingConversation) {
-            return new NextResponse("Invalid ID", { status: 400 })
-        }
+        if(!existingConversation) return new NextResponse("Invalid ID", { status: 400 })
 
         const deletedConversation = await prisma.conversation.deleteMany({
             where: {
@@ -39,9 +37,7 @@ export async function DELETE( request: Request, {params}: {params: IParams} ) {
         })
 
         existingConversation.users.forEach((user) => {
-            if(user.email) {
-                pusherServer.trigger(user.email, "conversation:remove", existingConversation)
-            }
+            if(user.email) pusherServer.trigger(user.email, "conversation:remove", existingConversation)
         })
 
         return NextResponse.json(deletedConversation)
