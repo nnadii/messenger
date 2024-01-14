@@ -30,9 +30,7 @@ export const authOptions: NextAuthOptions = {
                 }
 
                 const user = await prisma.user.findUnique({
-                    where: {
-                        email: credentials.email
-                    }
+                    where: { email: credentials.email }
                 })
                 if(!user || !user?.hashedPassword) throw new Error("Invalid credentials")
 
@@ -44,6 +42,6 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     debug: process.env.NODE_ENV == "development", 
-    session: { strategy: "jwt"},
+    session: { strategy: "jwt" },
     secret: process.env.NEXTAUTH_SECRET
 }
