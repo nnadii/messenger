@@ -34,9 +34,7 @@ export async function POST(
             }
         })
 
-        if(!conversation) {
-            return new NextResponse("Invalid ID", { status: 400 })
-        }
+        if(!conversation) return new NextResponse("Invalid ID", { status: 400 })
 
         //Find the last message
         const lastMessage = conversation.messages[conversation.messages.length - 1]
@@ -68,9 +66,7 @@ export async function POST(
             messages: [updatedMessage]
         })
 
-        if(lastMessage.seenIds.indexOf(currentUser.id) !== -1) {
-            return NextResponse.json(conversation)
-        }
+        if(lastMessage.seenIds.indexOf(currentUser.id) !== -1) return NextResponse.json(conversation)
 
         await pusherServer.trigger(conversationId!, "message:update", updatedMessage)
 
