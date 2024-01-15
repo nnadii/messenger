@@ -32,14 +32,8 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({ isOpen, onClose, users 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
 
-        axios.post("/api/conversations", {
-            ...data,
-            isGroup: true
-        })
-        .then(() => {
-            router.refresh()
-            onClose()
-        })
+        axios.post("/api/conversations", {...data, isGroup: true })
+        .then(() => { router.refresh(); onClose() })
         .catch(() => toast.error("Something went wrong!"))
         .finally(() => setIsLoading(false))
     }
