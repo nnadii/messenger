@@ -23,9 +23,7 @@ export function MyThemeContextProvider( props: ThemePropsInterface ): ReactEleme
         } else {
             const isDarkTheme: boolean = JSON.parse(localStorage.getItem("isDarkTheme")!)
             isDarkTheme && document!.querySelector("body")!.classList.add("dark")
-            setIsDarkTheme(() => {
-            return isDarkTheme
-            })
+            setIsDarkTheme(() => { return isDarkTheme })
         }
     }
 
@@ -36,13 +34,11 @@ export function MyThemeContextProvider( props: ThemePropsInterface ): ReactEleme
         setValueToLocalStorage()
     }
 
-    function toggleDarkClassToBody(): void { document!.querySelector("body")!.classList.toggle("dark") }
-    function setValueToLocalStorage(): void { localStorage.setItem("isDarkTheme", `${!isDarkTheme}`) }
+    function toggleDarkClassToBody(): void {document!.querySelector("body")!.classList.toggle("dark")}
+    function setValueToLocalStorage(): void {localStorage.setItem("isDarkTheme", `${!isDarkTheme}`)}
 
     return (
-        <MyThemeContext.Provider value={{ isDarkTheme: true, toggleThemeHandler }}>
-            {props.children}
-        </MyThemeContext.Provider>
+        <MyThemeContext.Provider value={{ isDarkTheme: true, toggleThemeHandler }}>{props.children}</MyThemeContext.Provider>
     )
 }
 

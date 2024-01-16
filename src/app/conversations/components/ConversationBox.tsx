@@ -37,10 +37,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected }) => 
     }, [session.data?.user?.email])
 
     const hasSeen = useMemo(() => {
-        if(!lastMessage) {
-            return false
-        }
-
+        if(!lastMessage) return false
         const seenArray = lastMessage.seen || []
         if(!userEmail) return false
 

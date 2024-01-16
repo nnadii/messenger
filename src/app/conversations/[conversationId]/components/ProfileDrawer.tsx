@@ -14,16 +14,14 @@ import useActiveList from "@/app/hooks/useActiveList"
 interface ProfileDrawerProps {
     isOpen: boolean
     onClose: () => void
-    data: Conversation & {
-        users: User[]
-    }
+    data: Conversation & { users: User[] }
 }
 
 const ProfileDrawer: React.FC<ProfileDrawerProps> = ({isOpen, onClose, data}) => {
     const otherUser = useOtherUser(data)
     const [confirmOpen, setConfirmOpen] = useState(false)
 
-    const { members } = useActiveList()
+    const {members} = useActiveList()
     const isActive = members.indexOf(otherUser?.email!) !== - 1
 
     const joinedDate = useMemo(() => {
@@ -35,12 +33,12 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({isOpen, onClose, data}) =>
     }, [data.name, otherUser.name])
 
     const statusText = useMemo(() => {
-        if(data.isGroup) {
-            return `${data.users.length} members`
-        }
+        if(data.isGroup) return `${data.users.length} members`
 
         return isActive ? "Active" : "Offline"
     }, [data, isActive])
+
+
     return (
         <>
         <ConfirmModal isOpen={confirmOpen} onClose={() => setConfirmOpen(false)} />

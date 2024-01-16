@@ -52,9 +52,7 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({ isOpen, onClose, users 
                                 value: user.id,
                                 label: user.name
                             }))}
-                            onChange={(value) => setValue("members", value, {
-                                shouldValidate: true
-                            })}
+                            onChange={(value) => setValue("members", value, {shouldValidate: true})}
                             value={members}
                             />
                         </div>

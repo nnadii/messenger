@@ -10,9 +10,7 @@ interface ImageModalProps {
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({isOpen, onClose, src}) => {
-    if(!src) {
-        return null
-    }
+    if(!src) return null
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <div className="w-80 h-80">
