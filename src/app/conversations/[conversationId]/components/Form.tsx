@@ -8,7 +8,7 @@ import MessageInput from "./MessageInput"
 import { CldUploadButton } from "next-cloudinary"
 
 const Form = () => {
-    const { conversationId } = useConversation()
+    const {conversationId} = useConversation()
 
     const {register, handleSubmit, setValue, formState: { errors }} = useForm<FieldValues>({
         defaultValues: { message: "" }
