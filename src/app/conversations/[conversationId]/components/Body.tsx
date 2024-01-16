@@ -28,9 +28,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages }) => {
         const messageHandler = (message: FullMessageType) => {
             axios.post(`/api/conversations/${conversationId}/seen`)
             setMessages((current) => {
-                if(find(current, { id: message.id })) {
-                    return current
-                }
+                if(find(current, { id: message.id })) return current
 
                 return [...current, message]
             })
